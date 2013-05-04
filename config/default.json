@@ -2,7 +2,7 @@
   "server" : {
     "host" : "localhost",
     "port" : 3000,
-    "blob_dir" : "/blob/",
+    "blob_dir" : "./public/images/",
     "mongo" : {
         "host" : "localhost",
         "db_name" : "NamekoPhoto"
