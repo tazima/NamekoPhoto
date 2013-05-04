@@ -5,11 +5,11 @@
 var express = require('express'),
   config = require('config'),
   conf = config.server,
-  routes = require('./routes'),
+  resource = require('express-resource'),
   http = require('http'),
   path = require('path');
 
-var app = express();
+var app = module.exports = express();
 
 // all environments
 app.set('port', conf.port);
@@ -28,7 +28,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// routing
+app.resource('/', require('./routes/index'));
+app.resource('photos', require('./routes/photos'));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
