@@ -1,6 +1,6 @@
 {
   "name": "NamekoPhoto",
-  "subdomain": "tazima.NamekoPhoto"
+  "subdomain": "tazima-NamekoPhoto"
   "version": "0.0.1",
   "private": true,
   "scripts": {
