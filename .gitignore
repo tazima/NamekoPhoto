@@ -4,4 +4,6 @@
 .*.swp
 
 node_modules
-config
+
+config/*.*
+!default.json
