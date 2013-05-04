@@ -2,17 +2,37 @@
  * photos resource.
  */
 
+var fs = require('fs');
+
 /*
  * save a photo.
  */
 exports.create = function(req, res){
 
+  var reqFile = req.files.file;
+
   // TODO validate.
 
-  // TODO save a photo to db.
+  // save a photo to db.
+  var photo = new Photo();
+  photo.name = reqFile.name;
 
-  // TODO create response.
-  res.send(201);
+  photo.save(function(err) {
+    if(err) throw err;
+
+    // save binary data.
+    var tmp_path = reqFile.path;
+    var target_path = photo.path;
+    fs.rename(tmp_path, target_path, function(err) {
+      if (err) throw err;
+
+      // delete temporary file.
+      fs.unlink(tmp_path, function() {
+        if (err) throw err;
+        res.status(201).send();
+      });
+    });
+  });
 };
 
 /*

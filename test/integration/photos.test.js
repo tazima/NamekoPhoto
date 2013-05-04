@@ -8,6 +8,7 @@ describe('/photos', function() {
     it('/photosへのPOSTで201が返却されること', function(done) {
       request(app)
         .post(requestPath)
+        .attach('file', 'test/resource/nanameko.jpg')
         .expect(201, done);
     });
   });
