@@ -1,6 +1,11 @@
 {
   "server" : {
-    "host" : "localhost", // server host
-    "port" : 3000         // server port
+    "host" : "localhost",
+    "port" : 3000,
+    "blob_dir" : "/blob/",
+    "mongo" : {
+        "host" : "localhost",
+        "db_name" : "NamekoPhoto"
+    }
   }
 }
