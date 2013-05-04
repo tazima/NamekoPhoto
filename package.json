@@ -10,7 +10,8 @@
     "express": "3.1.2",
     "express-resource": "1.0.0",
     "jade": "*",
-    "config": "*"
+    "config": "*",
+    "mongoose": "*"
   },
   "devDependencies": {
     "mocha": "*",
