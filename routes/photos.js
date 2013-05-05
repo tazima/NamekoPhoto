@@ -39,6 +39,15 @@ exports.create = function(req, res){
  * list photos.
  */
 exports.index = function(req, res){
+  // test
+  var p = new Photo({ name: "hogehoge"});
+  p.save();
+
+  Photo.find(function(err, photos) {
+    photos.forEach(function(photo) {
+      console.log(photo);
+    });
+  });
 
   // TODO get list of photos from db.
 

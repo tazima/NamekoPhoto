@@ -17,7 +17,8 @@ var app = module.exports = express();
 app.set('port', conf.port);
 app.set('host', conf.host);
 
-app.set('connstring', 'mongodb://nodejitsu:db9b7febd39c070efe9bab24f52970d6@linus.mongohq.com:10069/nodejitsudb2763706098');
+// app.set('connstring', 'mongodb://nodejitsu:db9b7febd39c070efe9bab24f52970d6@linus.mongohq.com:10069/nodejitsudb2763706098');
+app.set('connstring', process.env.MONGO_CONN_STRING);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -33,8 +34,6 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
   app.set('connstring', 'mongodb://' + conf.mongo.host + '/' + conf.mongo.db_name);
 }
-
-console.log(process.env);
 
 //configure mongoose models
 models.defineModels(mongoose, conf, function() {
