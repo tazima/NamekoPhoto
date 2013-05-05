@@ -3,13 +3,12 @@
  */
 
 var express = require('express'),
-  config = require('config'),
-  conf = config.server,
-  resource = require('express-resource'),
-  mongoose = require('mongoose'),
-  models = require('./models'),
-  http = require('http'),
-  path = require('path');
+    config = require('config'),
+    conf = config.server,
+    resource = require('express-resource'),
+    mongoose = require('mongoose'),
+    http = require('http'),
+    path = require('path');
 
 var app = module.exports = express();
 
@@ -35,11 +34,8 @@ if ('development' == app.get('env')) {
   app.set('connstring', 'mongodb://' + conf.mongo.host + '/' + conf.mongo.db_name);
 }
 
-//configure mongoose models
-models.defineModels(mongoose, conf, function() {
-  app.Photo = Photo = mongoose.model('Photo');
-  db = mongoose.connect(app.set('connstring'));
-});
+// connect to db
+mongoose.connect(app.set('connstring'));
 
 // routing
 app.resource('/', require('./routes/index'));
