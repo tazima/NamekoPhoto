@@ -31,7 +31,7 @@ exports.create = function(req, res){
       // delete temporary file.
       fs.unlink(tmp_path, function() {
         if (err) throw err;
-        res.status(201).send();
+        res.redirect('/photos');
       });
     });
   });

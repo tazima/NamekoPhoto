@@ -5,11 +5,12 @@ describe('/photos', function() {
   var requestPath = '/photos';
 
   describe('POST', function() {
-    it('/photosへのPOSTで201が返却されること', function(done) {
+    it('/photosへのPOSTで302が返却されること', function(done) {
       request(app)
         .post(requestPath)
         .attach('file', 'test/resource/nanameko.jpg')
-        .expect(201, done);
+        .expect(302, done)
+        .expect('location', '/photos');
     });
   });
 
