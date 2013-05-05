@@ -41,9 +41,16 @@ exports.create = function(req, res){
  * list photos.
  */
 exports.index = function(req, res){
-  // TODO get list of photos from db.
 
-  // TODO create response.
-  res.render('photos', { title: 'NamekoPhoto' });
+  // get list of photos from db.
+  Photo.find(function(err, photos) {
+    var files = new Array();
+    photos.forEach(function(photo) {
+      files.push({name: photo.name, path: photo.path.substring('/public/'.length + 1)});
+    });
+    res.render('photos', { 
+      title: 'NamekoPhoto', 
+      files: files });
+  });
 };
 
