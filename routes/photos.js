@@ -9,9 +9,9 @@ var fs = require('fs');
  */
 exports.create = function(req, res){
 
-  var reqFile = req.files.file;
-
   // TODO validate.
+
+  var reqFile = req.files.file;
 
   // save a photo to db.
   var photo = new Photo();
@@ -43,6 +43,6 @@ exports.index = function(req, res){
   // TODO get list of photos from db.
 
   // TODO create response.
-  res.send(200);
+  res.render('photos', { title: 'NamekoPhoto' });
 };
 
