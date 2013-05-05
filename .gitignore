@@ -10,3 +10,7 @@ config/*.*
 
 public/images/*
 !public/images/.gitkeep
+
+public/tmp/*
+!public/images/.gitkeep
+
