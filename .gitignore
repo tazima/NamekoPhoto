@@ -8,4 +8,5 @@ node_modules
 config/*.*
 !default.json
 
-public/images
+public/images/*
+!public/images/.gitkeep

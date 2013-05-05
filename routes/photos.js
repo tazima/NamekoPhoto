@@ -25,6 +25,7 @@ exports.create = function(req, res){
     var tmp_path = reqFile.path;
     var target_path = photo.path;
     fs.rename(tmp_path, target_path, function(err) {
+      console.log(err);
       if (err) throw err;
 
       // delete temporary file.

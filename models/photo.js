@@ -4,7 +4,9 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+    ObjectId = Schema.ObjectId,
+    config = require('config'),
+    conf = config.server;
 
 /**
  * Photo model
