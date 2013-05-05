@@ -29,7 +29,7 @@ Photo.virtual('published_date')
 
 Photo.virtual('path')
   .get(function() {
-    return conf.blob_dir + this._id;
+    return conf.blob_dir + this._id.toHexString();
   });
 
 // register mongoose models
