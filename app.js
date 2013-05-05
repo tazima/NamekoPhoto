@@ -34,7 +34,7 @@ if ('development' == app.get('env')) {
   app.set('connstring', 'mongodb://' + conf.mongo.host + '/' + conf.mongo.db_name);
 }
 
-console.log(require("process").env);
+console.log(process.env);
 
 //configure mongoose models
 models.defineModels(mongoose, conf, function() {
