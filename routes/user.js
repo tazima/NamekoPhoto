@@ -3,54 +3,24 @@
  */
 
 var fs = require('fs'),
-    Photo = require("../models/photo");
+    User = require("../models/user");
 
 /*
- * save a photo.
+ * save a user.
  */
 exports.create = function(req, res){
 
   // TODO validate.
 
-  var reqFile = req.files.file;
+  // save a user to db.
+  var user = new User();
+  user.name = req.param('name');
+  user.email = req.param('email');
+  user.password = req.param('password');
 
-  // save a photo to db.
-  var photo = new Photo();
-  photo.name = reqFile.name;
-
-  photo.save(function(err) {
+  user.save(function(err) {
     if(err) throw err;
-
-    // save binary data.
-    var tmp_path = reqFile.path;
-    var target_path = photo.path;
-    fs.rename(tmp_path, target_path, function(err) {
-      console.log(err);
-      if (err) throw err;
-
-      // delete temporary file.
-      fs.unlink(tmp_path, function() {
-        if (err) throw err;
-        res.redirect('/photos');
-      });
-    });
-  });
-};
-
-/*
- * list photos.
- */
-exports.index = function(req, res){
-
-  // get list of photos from db.
-  Photo.find(function(err, photos) {
-    var files = new Array();
-    photos.forEach(function(photo) {
-      files.push({name: photo.name, path: photo.path.substring('/public/'.length + 1)});
-    });
-    res.render('photos', { 
-      title: 'NamekoPhoto', 
-      files: files });
+    res.redirect('/photos');
   });
 };
 
