@@ -15,7 +15,8 @@ var mongoose = require('mongoose'),
 var Photo = new Schema({
   published: { type: Date, default: Date.now },
   updated: { type: Date, default: Date.now },
-  name: String
+  name: String,
+  user: String
 });
 
 Photo.virtual('id').get(function() {
