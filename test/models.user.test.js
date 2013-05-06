@@ -30,10 +30,10 @@ describe('UserModel', function() {
       pochi.name.should.be.equal('ポチ');
       pochi.password.should.be.equal('!23$59ewwapoiu!23$59ewwapoiu!23$59ewwapoiu');
       
-      (function() {
-        pochi.save(done);
-      }).should.throw();
-      // }).should.throw('ValidationError');
+      pochi.save(function(err) {
+        should.exist(err);
+        done();
+      });
 
     });
   });
